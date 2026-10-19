@@ -66,7 +66,7 @@ export const ProjectsSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          number="// 03"
+          number="03"
           badge="Product Showcase"
           title="Flagship Systems"
           description="Các dự án được nghiên cứu và hiện thực hóa với tư duy sản phẩm hoàn chỉnh: từ nền tảng web media, hệ sinh thái giao đồ ăn đa nền tảng đến robot thông minh tương tác giọng nói."
@@ -262,7 +262,7 @@ export const ProjectsSection: React.FC = () => {
             <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-mono text-zinc-400 uppercase tracking-wider">
-                  // 3 INTERCONNECTED APPS:
+                  INTERCONNECTED APPS:
                 </span>
               </div>
 

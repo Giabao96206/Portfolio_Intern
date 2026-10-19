@@ -95,7 +95,7 @@ export const TechStackSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          number="// 02"
+          number="02"
           badge="Ecosystem & Tools"
           title="The Tech Universe"
           description="Hệ sinh thái công nghệ được phân nhóm khoa học từ ngôn ngữ cốt lõi, công nghệ web & di động, kiến trúc backend đến các lĩnh vực đang tích cực tìm tòi khám phá."

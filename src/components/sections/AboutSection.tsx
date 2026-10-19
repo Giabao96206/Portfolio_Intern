@@ -58,7 +58,7 @@ export const AboutSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          number="// 01"
+          number="01"
           badge="Story & Identity"
           title="About The Developer"
           description="Khám phá hành trình học tập, tư duy kỹ thuật và niềm đam mê xây dựng các sản phẩm số của một sinh viên Công nghệ thông tin VKU."
@@ -170,7 +170,7 @@ export const AboutSection: React.FC = () => {
             {/* Journey Milestones Timeline */}
             <div>
               <h4 className="font-mono text-xs uppercase tracking-widest text-zinc-400 mb-4 flex items-center gap-2">
-                <span>// LEARNING & TECH EVOLUTION TIMELINE</span>
+                <span>LEARNING & TECH EVOLUTION TIMELINE</span>
               </h4>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

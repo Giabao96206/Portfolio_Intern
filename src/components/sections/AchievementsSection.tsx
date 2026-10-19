@@ -14,7 +14,7 @@ export const AchievementsSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          number="// 04"
+          number="04"
           badge="Activities & Challenges"
           title="Competitions & Journey"
           description="Quá trình tham gia các sân chơi công nghệ nhằm cọ xát thực tế, thử thách bản thân dưới áp lực thời gian và rèn luyện kỹ năng giải quyết vấn đề."

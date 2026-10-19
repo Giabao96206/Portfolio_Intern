@@ -25,7 +25,7 @@ export const JapaneseSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          number="// 05"
+          number="05"
           badge="Linguistic Journey"
           title="Japanese · JLPT N4"
           description="Hành trình học tiếng Nhật kiên trì mở rộng góc nhìn văn hóa, kỷ luật bản thân và chuẩn bị hành trang hội nhập công nghệ quốc tế."
@@ -67,7 +67,7 @@ export const JapaneseSection: React.FC = () => {
           <div className="flex items-center justify-between mb-6">
             <h4 className="font-mono text-xs uppercase tracking-widest text-zinc-400 flex items-center gap-2">
               <BookOpen className="w-4 h-4 text-cyan-400" />
-              <span>// CLICK CARDS TO FLIP: MINDSET & KEY VOCABULARY</span>
+              <span>CLICK CARDS TO FLIP: MINDSET & KEY VOCABULARY</span>
             </h4>
             <span className="text-[11px] font-mono text-zinc-500">
               Tap to reveal meaning & sentence

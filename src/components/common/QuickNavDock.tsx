@@ -13,13 +13,13 @@ export const QuickNavDock: React.FC<QuickNavDockProps> = ({
   scrollProgress,
 }) => {
   const sections = [
-    { id: 'hero', label: '00 // HERO' },
-    { id: 'about', label: '01 // ABOUT' },
-    { id: 'tech-stack', label: '02 // STACK' },
-    { id: 'projects', label: '03 // PROJECTS' },
-    { id: 'achievements', label: '04 // ACTIVITIES' },
-    { id: 'japanese', label: '05 // JAPANESE' },
-    { id: 'contact', label: '06 // CONTACT' },
+    { id: 'hero', label: '00 HERO' },
+    { id: 'about', label: '01 ABOUT' },
+    { id: 'tech-stack', label: '02 STACK' },
+    { id: 'projects', label: '03 PROJECTS' },
+    { id: 'achievements', label: '04 ACTIVITIES' },
+    { id: 'japanese', label: '05 JAPANESE' },
+    { id: 'contact', label: '06 CONTACT' },
   ];
 
   return (

@@ -89,10 +89,10 @@ export const portfolioData = {
   personal: {
     // Easily replace with real name and photo
     name: "IT Creative Developer",
-    displayName: "[YOUR NAME]",
+    displayName: "Trần Văn Gia Bảo",
     role: "Creative Developer & Software Engineer",
     yearOfStudy: "Sinh viên năm 3",
-    university: "Trường Đại học Công nghệ Thông tin và Truyền thông Việt – Hàn (VKU)",
+    university: "Trường Đại học Công nghệ Thông tin và Truyền thông Việt Hàn (VKU)",
     universityShort: "VKU",
     location: "Da Nang, Vietnam",
     japaneseLevel: "JLPT N4",
@@ -107,14 +107,14 @@ export const portfolioData = {
       "Bên cạnh việc phát triển chuyên môn kỹ thuật tại VKU, tôi đang trau dồi tiếng Nhật với mục tiêu chinh phục chứng chỉ JLPT N4 để mở rộng cơ hội học hỏi và kết nối quốc tế."
     ],
     // Placeholders for easy replacement
-    avatarPlaceholder: "https://images.unsplash.com/photo-1534972195531-a756b1126f24?auto=format&fit=crop&w=800&q=80",
-    emailPlaceholder: "contact.developer@vku.edu.vn",
-    githubPlaceholder: "https://github.com/[your-username]",
-    linkedinPlaceholder: "https://linkedin.com/in/[your-username]",
+    avatarPlaceholder: "https://i.postimg.cc/nrxwzHRk/1792426942858-60947728766795303-5182481005142575636-fd566590a5fce7a259c8b8b9831fdbd6.jpg",
+    emailPlaceholder: "baotvg.24it@vku.edu.vn",
+    githubPlaceholder: "https://github.com/Giabao96206",
+    linkedinPlaceholder: "https://linkedin.com/in/giabao-tran",
     socialLinks: [
-      { name: "GitHub", url: "https://github.com/", placeholder: "github.com/[your-handle]" },
-      { name: "LinkedIn", url: "https://linkedin.com/", placeholder: "linkedin.com/in/[your-profile]" },
-      { name: "Email", url: "mailto:contact@vku.edu.vn", placeholder: "contact@vku.edu.vn" }
+      { name: "GitHub", url: "https://github.com/", placeholder: "github.com/Giabao96206" },
+      { name: "LinkedIn", url: "https://linkedin.com/", placeholder: "linkedin.com/in/giabao-tran" },
+      { name: "Email", url: "mailto:baotvg.24it@vku.edu.vn", placeholder: "baotvg.24it@vku.edu.vn" }
     ]
   } as PersonalInfo,
 
@@ -247,7 +247,7 @@ export const portfolioData = {
       ],
       architectureOverview: "Kiến trúc ứng dụng phân tầng component rõ ràng: UI Presentation layer sử dụng React + Tailwind, Data Access layer tích hợp REST API, tối ưu hóa caching dữ liệu tìm kiếm và lazy loading poster phim.",
       demoUrl: "https://placeholder-movie-demo.com",
-      githubUrl: "https://github.com/[your-username]/movie-discovery-platform"
+      githubUrl: "https://github.com/Giabao96206/NotFlix"
     },
     {
       id: "food-delivery",
@@ -290,7 +290,7 @@ export const portfolioData = {
         }
       ],
       demoUrl: "https://placeholder-food-demo.com",
-      githubUrl: "https://github.com/[your-username]/food-delivery-ecosystem"
+      githubUrl: "https://github.com/Giabao96206/ShoppeFood_FE"
     },
     {
       id: "desktop-robot",
@@ -332,7 +332,7 @@ export const portfolioData = {
         }
       ],
       demoUrl: "https://placeholder-robot-demo.com",
-      githubUrl: "https://github.com/[your-username]/raspberry-pi-conversational-robot"
+      githubUrl: "https://github.com/Giabao96206/Raspberry_Pi_AI"
     }
   ] as ProjectItem[],
 

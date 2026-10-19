@@ -67,7 +67,7 @@ export const ContactSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          number="// 06"
+          number="06"
           badge="Get in Touch"
           title="GOT AN IDEA? LET’S BUILD IT."
           description="I'm always interested in exploring ideas, building products and learning something new. Sẵn sàng kết nối để cùng thảo luận về công nghệ, đồ án và các cơ hội phát triển."
@@ -110,7 +110,7 @@ export const ContactSection: React.FC = () => {
             {/* Social Placeholder Links */}
             <div className="p-6 rounded-3xl glass-panel border border-white/10">
               <span className="text-xs font-mono uppercase text-zinc-400 block mb-4">
-                // SOCIALS & CODE REPOSITORIES
+                SOCIALS & CODE REPOSITORIES
               </span>
               <div className="space-y-3">
                 <a
