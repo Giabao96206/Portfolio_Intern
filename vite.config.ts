@@ -5,6 +5,11 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+
+  server: {
+    allowedHosts: ['1913-113-160-225-29.ngrok-free.app'],
+  },
+
   build: {
     rollupOptions: {
       output: {
@@ -23,5 +28,3 @@ export default defineConfig({
     },
   },
 })
-
-

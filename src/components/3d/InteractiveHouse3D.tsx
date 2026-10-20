@@ -3,11 +3,24 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import type { OrbitControls as OrbitControlsType } from 'three-stdlib';
 import * as THREE from 'three';
-import { RotateCcw, Play, Pause, Compass, Monitor, Server, Rocket, Eye } from 'lucide-react';
+import {
+  RotateCcw,
+  Play,
+  Pause,
+  Compass,
+  Monitor,
+  Server,
+  Rocket,
+  Eye,
+  Layers,
+  Sparkles,
+} from 'lucide-react';
 import { FuturisticHouseModel } from './FuturisticHouseModel';
+import { LittlestTokyoModel } from './LittlestTokyoModel';
 import { soundFX } from '../../utils/soundEffects';
 
 type ViewpointKey = 'overview' | 'desk' | 'server' | 'rooftop';
+type ModelType = 'tokyo' | 'procedural';
 
 interface ViewpointConfig {
   key: ViewpointKey;
@@ -23,30 +36,38 @@ const VIEWPOINTS: ViewpointConfig[] = [
     label: 'Overview',
     icon: Compass,
     position: [7.5, 5.5, 8.5],
-    target: [0, 1.2, 0],
+    target: [0, 0.8, 0],
   },
   {
     key: 'desk',
-    label: 'Workspace',
+    label: 'Studio',
     icon: Monitor,
-    position: [2.6, 2.2, 4.0],
-    target: [-0.4, 1.2, -0.2],
+    position: [2.8, 2.2, 4.2],
+    target: [0.3, 1.0, 0.2],
   },
   {
     key: 'server',
-    label: 'Compute Rack',
+    label: 'Cyber Nodes',
     icon: Server,
     position: [-4.2, 2.4, 3.8],
-    target: [-1.4, 1.2, -0.6],
+    target: [-1.0, 0.8, -0.4],
   },
   {
     key: 'rooftop',
-    label: 'Rooftop Lab',
+    label: 'Rooftop',
     icon: Rocket,
     position: [0.8, 7.2, 5.2],
-    target: [0.3, 3.0, 0],
+    target: [0, 2.2, 0],
   },
 ];
+
+// 3D Canvas Suspense Loading Screen
+const ModelLoader: React.FC = () => (
+  <mesh>
+    <boxGeometry args={[1, 1, 1]} />
+    <meshBasicMaterial color="#00f0ff" wireframe />
+  </mesh>
+);
 
 // Inner camera transition controller component
 const CameraRig: React.FC<{
@@ -62,7 +83,6 @@ const CameraRig: React.FC<{
     if (!controlsRef.current) return;
 
     if (!isAutoRotate) {
-      // Smoothly interpolate camera position toward the selected viewpoint
       camera.position.lerp(targetPos, 0.05);
       controlsRef.current.target.lerp(targetLookAt, 0.05);
       controlsRef.current.update();
@@ -77,6 +97,7 @@ interface InteractiveHouse3DProps {
 }
 
 export const InteractiveHouse3D: React.FC<InteractiveHouse3DProps> = ({ onNavigateSection }) => {
+  const [modelType, setModelType] = useState<ModelType>('tokyo');
   const [currentView, setCurrentView] = useState<ViewpointKey>('overview');
   const [isAutoRotate, setIsAutoRotate] = useState<boolean>(true);
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
@@ -101,6 +122,15 @@ export const InteractiveHouse3D: React.FC<InteractiveHouse3DProps> = ({ onNaviga
   const toggleAutoRotate = () => {
     soundFX.playClick();
     setIsAutoRotate((prev) => !prev);
+  };
+
+  const handleToggleModel = (type: ModelType) => {
+    soundFX.playCameraSwitch();
+    setModelType(type);
+    setIsAutoRotate(true);
+    if (controlsRef.current) {
+      controlsRef.current.reset();
+    }
   };
 
   const handleHotspotClick = (sectionId: string) => {
@@ -139,31 +169,39 @@ export const InteractiveHouse3D: React.FC<InteractiveHouse3DProps> = ({ onNaviga
         <PerspectiveCamera makeDefault position={[7.5, 5.5, 8.5]} fov={42} />
 
         {/* Ambient & Directional Architectural Lights */}
-        <ambientLight intensity={0.65} color="#cbd5e1" />
+        <ambientLight intensity={modelType === 'tokyo' ? 1.4 : 0.65} color="#e2e8f0" />
         <directionalLight
-          position={[10, 15, 10]}
-          intensity={1.8}
-          color="#f8fafc"
+          position={[10, 18, 12]}
+          intensity={modelType === 'tokyo' ? 2.5 : 1.8}
+          color="#ffffff"
           castShadow
           shadow-mapSize-width={1024}
           shadow-mapSize-height={1024}
-          shadow-camera-far={25}
-          shadow-camera-left={-6}
-          shadow-camera-right={6}
-          shadow-camera-top={6}
-          shadow-camera-bottom={-6}
+          shadow-camera-far={30}
+          shadow-camera-left={-8}
+          shadow-camera-right={8}
+          shadow-camera-top={8}
+          shadow-camera-bottom={-8}
         />
         {/* Soft Cyan Fill Light */}
-        <pointLight position={[-6, 4, 6]} intensity={1.5} color="#00f0ff" distance={15} />
+        <pointLight position={[-6, 4, 6]} intensity={1.8} color="#00f0ff" distance={15} />
         {/* Soft Violet Back Light */}
-        <pointLight position={[6, 3, -6]} intensity={1.2} color="#a855f7" distance={15} />
+        <pointLight position={[6, 3, -6]} intensity={1.5} color="#a855f7" distance={15} />
 
-        <Suspense fallback={null}>
-          <FuturisticHouseModel
-            onSelectHotspot={handleHotspotClick}
-            activeHotspot={activeHotspot}
-            setActiveHotspot={setActiveHotspot}
-          />
+        <Suspense fallback={<ModelLoader />}>
+          {modelType === 'tokyo' ? (
+            <LittlestTokyoModel
+              onSelectHotspot={handleHotspotClick}
+              activeHotspot={activeHotspot}
+              setActiveHotspot={setActiveHotspot}
+            />
+          ) : (
+            <FuturisticHouseModel
+              onSelectHotspot={handleHotspotClick}
+              activeHotspot={activeHotspot}
+              setActiveHotspot={setActiveHotspot}
+            />
+          )}
         </Suspense>
 
         <OrbitControls
@@ -172,11 +210,11 @@ export const InteractiveHouse3D: React.FC<InteractiveHouse3DProps> = ({ onNaviga
           dampingFactor={0.06}
           autoRotate={isAutoRotate}
           autoRotateSpeed={0.8}
-          minDistance={5}
-          maxDistance={14}
+          minDistance={4}
+          maxDistance={15}
           minPolarAngle={Math.PI / 6}
           maxPolarAngle={Math.PI / 2.05}
-          target={[0, 1.2, 0]}
+          target={[0, 0.8, 0]}
         />
 
         <CameraRig
@@ -208,6 +246,37 @@ export const InteractiveHouse3D: React.FC<InteractiveHouse3DProps> = ({ onNaviga
             </button>
           );
         })}
+      </div>
+
+      {/* Top Center: Model Switcher Pill */}
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1 p-1 rounded-xl bg-[#08090d]/85 backdrop-blur-xl border border-white/10 shadow-xl">
+        <button
+          type="button"
+          onClick={() => handleToggleModel('tokyo')}
+          onMouseEnter={() => soundFX.playHover()}
+          className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all flex items-center gap-1.5 ${
+            modelType === 'tokyo'
+              ? 'bg-purple-500/25 text-purple-200 border border-purple-400/60 shadow-[0_0_12px_rgba(168,85,247,0.3)]'
+              : 'text-zinc-400 hover:text-white border border-transparent'
+          }`}
+        >
+          <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+          <span>Littlest Tokyo (3D Animated)</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => handleToggleModel('procedural')}
+          onMouseEnter={() => soundFX.playHover()}
+          className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all flex items-center gap-1.5 ${
+            modelType === 'procedural'
+              ? 'bg-cyan-500/25 text-cyan-200 border border-cyan-400/60 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
+              : 'text-zinc-400 hover:text-white border border-transparent'
+          }`}
+        >
+          <Layers className="w-3.5 h-3.5 text-cyan-400" />
+          <span>Cyber Studio</span>
+        </button>
       </div>
 
       {/* Camera Utility Controls (Top Right) */}
